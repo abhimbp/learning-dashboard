@@ -37,7 +37,7 @@ export function BentoGrid({
 
 const item = {
   hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 300, damping: 24 } },
+  show: { opacity: 1, y: 0, transition: { type: "spring" as const, stiffness: 300, damping: 24 } },
 };
 
 export function BentoTile({
@@ -51,7 +51,7 @@ export function BentoTile({
     <motion.div
       variants={item}
       whileHover={{ scale: 1.02 }}
-      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+      transition={{ type: "spring" as const, stiffness: 300, damping: 20 }}
       className={cn(
         "glass-panel glow-border rounded-3xl p-6 relative overflow-hidden flex flex-col",
         className
