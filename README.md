@@ -1,36 +1,27 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next-Gen Learning Dashboard
 
-## Getting Started
+A high-fidelity, futuristic student learning dashboard built with Next.js 14, Tailwind CSS, Framer Motion, and Supabase.
 
-First, run the development server:
+## 🚀 Architectural Choices
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+This project was built using the **Next.js App Router** to leverage the latest React features. The core architecture relies on a **Bento Grid** layout system, ensuring a responsive, modular, and highly visual data presentation structure. 
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Server / Client Component Split
+A key architectural decision was strictly dividing Server Components and Client Components to maximize performance and security:
+- **Server Components (Default):** Pages like `src/app/page.tsx` and `src/app/courses/page.tsx` are React Server Components. They securely fetch data directly from Supabase on the server using `@supabase/ssr`. This eliminates loading spinners for initial data, prevents exposing database logic to the client, and vastly improves SEO and initial load speeds.
+- **Client Components (`"use client"`):** Interactive UI elements like `Sidebar.tsx`, the animated `CourseTile.tsx`, and the `Analytics` charts are strictly Client Components. They utilize `useState` and `framer-motion` to provide buttery-smooth animations and instant interactive feedback without triggering server round-trips.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Styling & Animation
+- **Tailwind CSS:** Used for all styling, utilizing a custom cyberpunk-inspired color palette (deep obsidians, vibrant purples, and electric blues).
+- **Framer Motion:** Employed heavily for micro-interactions, spring physics on hover states, and seamless `layoutId` transitions in the Sidebar navigation.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🛠️ Setup Instructions
 
-## Learn More
+1. Clone the repository.
+2. Install dependencies using `npm install`.
+3. Rename `.env.example` to `.env.local`.
+4. Add your Supabase Project URL and Anon Key to the `.env.local` file.
+5. Run the development server with `npm run dev`.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🚧 Challenges Faced
+One of the primary challenges was ensuring fluid animations (like the glowing borders and sidebar active states) didn't conflict with Next.js Server Side Rendering (SSR). This was resolved by carefully isolating animation logic into dedicated Client Components while keeping the heavy lifting of data fetching cleanly abstracted in Server Components. Additionally, handling responsive layout shifts (from a side-nav on Desktop to a bottom-nav on Mobile) required precise Tailwind breakpoint management.
