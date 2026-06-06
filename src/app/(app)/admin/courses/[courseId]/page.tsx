@@ -39,7 +39,7 @@ export default async function AdminCourseEditorPage({ params }: { params: Promis
         <div className="bg-surface-900/50 p-6 md:p-8 rounded-3xl border border-white/5 h-fit">
           <h2 className="text-xl font-bold text-white mb-6 flex items-center gap-2"><Edit3 className="w-5 h-5 text-primary-400" /> Course Details</h2>
           
-          <form action={updateCourse} className="flex flex-col gap-5">
+          <form action={async (formData) => { await updateCourse(formData); }} className="flex flex-col gap-5">
             <input type="hidden" name="course_id" value={course.id} />
             
             <div className="flex flex-col gap-2">

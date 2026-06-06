@@ -208,7 +208,7 @@ export function DashboardClient({
                     </div>
                   ) : (
                     <div className="ml-8 mt-2">
-                      <form action={replyToReview} className="flex gap-2">
+                      <form action={async (formData) => { await replyToReview(formData); }} className="flex gap-2">
                         <input type="hidden" name="review_id" value={review.id} />
                         <input name="reply" required placeholder="Type a reply..." className="flex-1 px-4 py-2 bg-surface-900 rounded-lg text-sm text-white focus:outline-none border border-white/5 focus:border-primary-500 transition-colors" />
                         <button type="submit" className="px-4 py-2 bg-primary-600 hover:bg-primary-500 text-white text-sm font-bold rounded-lg transition-colors flex items-center gap-2">

@@ -5,7 +5,7 @@ import { deleteLesson } from "./actions";
 
 export function DeleteLessonButton({ lessonId, courseId }: { lessonId: string, courseId: string }) {
   return (
-    <form action={deleteLesson} onSubmit={(e) => {
+    <form action={async (formData) => { await deleteLesson(formData); }} onSubmit={(e) => {
       if (!confirm("Are you sure you want to delete this lesson? This action cannot be undone.")) {
         e.preventDefault();
       }

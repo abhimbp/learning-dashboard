@@ -35,7 +35,7 @@ export async function POST(request: Request) {
   }
 
   // Actual Stripe Integration
-  const stripe = new Stripe(stripeSecretKey, { apiVersion: '2025-02-24.acacia' });
+  const stripe = new Stripe(stripeSecretKey, { apiVersion: '2026-05-27.dahlia' });
 
   try {
     const session = await stripe.checkout.sessions.create({

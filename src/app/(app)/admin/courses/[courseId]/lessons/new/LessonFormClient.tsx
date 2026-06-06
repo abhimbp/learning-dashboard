@@ -88,7 +88,7 @@ export function LessonFormClient({
 
   return (
     <div className="bg-surface-900/50 p-6 md:p-8 rounded-3xl border border-white/5">
-      <form action={lessonId ? updateLesson : createLesson} className="flex flex-col gap-6">
+      <form action={async (formData) => { await (lessonId ? updateLesson : createLesson)(formData); }} className="flex flex-col gap-6">
         <input type="hidden" name="course_id" value={courseId} />
         {lessonId && <input type="hidden" name="lesson_id" value={lessonId} />}
         <input type="hidden" name="order_index" value={orderIndex} />

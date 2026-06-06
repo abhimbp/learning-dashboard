@@ -84,7 +84,7 @@ export function LessonPlayerClient({
              initial={{ opacity: 0, scale: 0.9 }}
              animate={{ opacity: 1, scale: 1 }}
              transition={{ delay: 0.3 }}
-             action={markCompleteAction}
+             action={async (formData) => { await markCompleteAction(formData); }}
            >
              <input type="hidden" name="lesson_id" value={lessonId} />
              <input type="hidden" name="course_id" value={courseId} />

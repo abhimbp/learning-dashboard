@@ -23,7 +23,7 @@ export default async function NewCoursePage() {
       </div>
 
       <div className="bg-surface-900/50 p-6 md:p-8 rounded-3xl border border-white/5">
-        <form action={createCourse} className="flex flex-col gap-5">
+        <form action={async (formData) => { await createCourse(formData); }} className="flex flex-col gap-5">
           <div className="flex flex-col gap-2">
             <label className="text-sm font-medium text-gray-400">Course Title</label>
             <input required name="title" className="px-4 py-3 bg-surface-800 rounded-xl text-sm text-white focus:outline-none border border-white/5 focus:border-primary-500 transition-colors" placeholder="e.g. Advanced Next.js" />

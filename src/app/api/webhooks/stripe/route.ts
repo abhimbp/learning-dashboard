@@ -13,7 +13,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'Missing Stripe secrets or signature' }, { status: 400 });
   }
 
-  const stripe = new Stripe(stripeSecretKey, { apiVersion: '2025-02-24.acacia' });
+  const stripe = new Stripe(stripeSecretKey, { apiVersion: '2026-05-27.dahlia' });
   let event;
 
   try {
