@@ -1,45 +1,63 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #0a0a0c;
-  --color-foreground: #f0f0f0;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
 
-  /* Custom palette for sleek, cyber aesthetic */
-  --color-primary-500: #8b5cf6;
-  --color-primary-600: #7c3aed;
-  --color-accent-500: #3b82f6;
-  --color-accent-600: #2563eb;
+  /* Primary colors - Apple Blue style */
+  --color-primary-400: #2997ff;
+  --color-primary-500: #0071e3;
+  --color-primary-600: #0058b0;
   
-  --color-surface-800: #1a1a24;
-  --color-surface-900: #121218;
+  --color-accent-400: #34c759;
+  --color-accent-500: #28cd41;
+  --color-accent-600: #248a3d;
   
-  --color-border: #ffffff15;
+  /* Surfaces mapping based on variables */
+  --color-surface-700: var(--surface-700);
+  --color-surface-800: var(--surface-800);
+  --color-surface-900: var(--surface-900);
+  
+  --color-border: var(--border-color);
+  
+  /* Make text generally smaller */
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 @layer base {
   :root {
-    --background: #0a0a0c;
-    --foreground: #f0f0f0;
+    --background: #000000;
+    --foreground: #f5f5f7;
+    --surface-700: #2c2c2e;
+    --surface-800: #1c1c1e; /* Apple dark mode surface */
+    --surface-900: #000000;
+    --border-color: rgba(255, 255, 255, 0.15);
   }
 
   body {
     background-color: var(--background);
     color: var(--foreground);
-    /* Subtle grain texture using a CSS background trick */
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+    font-size: 14px; /* Make text generally smaller globally */
+    line-height: 1.5;
   }
 }
 
 @layer utilities {
   .glass-panel {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(28, 28, 30, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+  }
+  
+  .glow-border {
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
   }
   
   .glow-border:hover {
-    border-color: rgba(139, 92, 246, 0.5);
-    box-shadow: 0 0 20px rgba(139, 92, 246, 0.15);
+    border-color: var(--color-primary-500);
+    box-shadow: 0 0 15px rgba(41, 151, 255, 0.3);
   }
 }

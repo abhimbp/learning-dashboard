@@ -9,6 +9,7 @@ export const revalidate = 0; // Always fetch fresh data on reload
 
 export default async function DashboardPage() {
   const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
   
   let courses: any[] = [];
   let fetchError = null;
@@ -38,7 +39,7 @@ export default async function DashboardPage() {
       )}
 
       <BentoGrid>
-        <HeroTile />
+        <HeroTile user={user} />
         <ActivityTile />
         
         {courses.map((course) => (

@@ -1,7 +1,9 @@
 import { BentoTile } from "./BentoGrid";
 import { Flame } from "lucide-react";
 
-export function HeroTile() {
+export function HeroTile({ user }: { user?: any }) {
+  const firstName = user?.user_metadata?.full_name?.split(' ')[0] || user?.email?.split('@')[0] || "Student";
+  
   return (
     <BentoTile className="md:col-span-2 xl:col-span-2 bg-gradient-to-br from-primary-900/40 to-surface-900 justify-between">
       <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/10 rounded-full blur-3xl -mr-20 -mt-20 pointer-events-none" />
@@ -10,7 +12,7 @@ export function HeroTile() {
         <div>
           <h2 className="text-sm font-medium text-primary-400 mb-1 tracking-wide uppercase">Dashboard</h2>
           <h1 className="text-3xl md:text-4xl font-bold text-white tracking-tight">
-            Welcome back, <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-accent-400">Student</span>
+            Welcome back, <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-accent-400">{firstName}</span>
           </h1>
           <p className="text-gray-400 mt-2 max-w-sm">
             You're doing great! Keep up the momentum and dive into your next lesson.
